@@ -24,7 +24,11 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://34.133.16.155:8000"],  # For development only. In production, specify your extension's origin
+    allow_origins=[
+        "chrome-extension://cjeojepoblhmjdmhjgchojgepfpppimm",  # Add your extension's ID here
+        "http://34.133.16.155:8000",
+        "*"  # For development only
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -107,7 +111,7 @@ def extract_keywords(summary, search_query, num_keywords=3):
         return []
 
 def get_youtube_links(keywords):
-    {}
+    return {}
     # links = {}
     # for keyword in keywords:
     #     videos_search = VideosSearch(keyword, limit=1)
