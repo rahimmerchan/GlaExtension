@@ -107,28 +107,31 @@ def extract_keywords(summary, search_query, num_keywords=3):
         return []
 
 def get_youtube_links(keywords):
-    links = {}
-    for keyword in keywords:
-        videos_search = VideosSearch(keyword, limit=1)
-        results = videos_search.result()
-        if results['result']:
-            video_id = results['result'][0]['id']
-            video_url = f"https://www.youtube.com/watch?v={video_id}"
-            links[keyword] = video_url
-    return links
+    {}
+    # links = {}
+    # for keyword in keywords:
+    #     videos_search = VideosSearch(keyword, limit=1)
+    #     results = videos_search.result()
+    #     if results['result']:
+    #         video_id = results['result'][0]['id']
+    #         video_url = f"https://www.youtube.com/watch?v={video_id}"
+    #         links[keyword] = video_url
+    # return links
 
 def add_hyperlinks(summary, links):
-    for keyword, url in links.items():
-        # Escape special characters in the keyword
-        escaped_keyword = re.escape(keyword)
-        pattern = f"\\b{escaped_keyword}\\b"
-        replacement = f'<a href="{url}" target="_blank">{keyword}</a>'
-        try:
-            summary = re.sub(pattern, replacement, summary, flags=re.IGNORECASE)
-        except Exception as e:
-            print(f"Error adding hyperlink for keyword '{keyword}': {e}")
-            continue
     return summary
+
+    # for keyword, url in links.items():
+    #     # Escape special characters in the keyword
+    #     escaped_keyword = re.escape(keyword)
+    #     pattern = f"\\b{escaped_keyword}\\b"
+    #     replacement = f'<a href="{url}" target="_blank">{keyword}</a>'
+    #     try:
+    #         summary = re.sub(pattern, replacement, summary, flags=re.IGNORECASE)
+    #     except Exception as e:
+    #         print(f"Error adding hyperlink for keyword '{keyword}': {e}")
+    #         continue
+    # return summary
 
 # Main summarization endpoint
 @app.post("/summarize", response_model=SummaryResponse)
