@@ -24,7 +24,7 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # For development only. In production, specify your extension's origin
+    allow_origins=["http://34.133.16.155:8000"],  # For development only. In production, specify your extension's origin
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -204,7 +204,11 @@ def summarize(request: SummarizeRequest):
 
     return {"summaries": summaries}
 
-
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",  # This allows external access
+        port=8000,
+        reload=True
+    )
