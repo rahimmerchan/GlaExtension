@@ -27,7 +27,8 @@
     }
   ],
   "host_permissions": [
-    "https://www.youtube.com/*"
-    "http://34.133.16.155:8000/*"  // Add this line
+    "https://www.youtube.com/*",
+    "http://34.133.16.155:8000/*" 
   ]
+
 }
